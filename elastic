@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ "$1" != "" ]; then
+  echo "Copying server"
+  mkdir -p deploy
+  cp server/package.json deploy
+  cp server/*.js deploy
+  cd deploy
+  cp my.env .env
+  echo "REACT_PATH=./build" >> .env
+  npm install
+  cd ..
+  echo "=> Building React.."
+  npm install
+  npm run build
+  echo "=> Removing build folder..."
+  rm -rf deploy/build
+  mv build deploy
+  echo "=> Zipping..."
+  cd deploy
+  zip -r dist.$1.zip * .ebextensions/* build/* node_modules/*
+  echo "=> Done"
+  cd ..
+else
+  echo "=> Provide version number (x.y.z) to build for elastic beanstalk"
+fi
