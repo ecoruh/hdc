@@ -11,7 +11,7 @@ Keep your household data safe, protected by strong encryption and authentication
 
 ## hidden stuff
 
-Secret stuff are kept in environment files and should not be checked in.
+Sensitive meta data required by `hdc` should be kept in environment files and should not be checked in. Sensitive data should be encrypted and should not be checked in.
 
 ## prerequisites
 
@@ -25,15 +25,30 @@ option_settings:
     InstancePort: 80
 ```
 
-## build tool
+## elastic
 
-The command line tool `elastic` builds and zips the **hdc** app under the `deploy` folder.
+The command line tool `elastic` builds and zips `hdc` under the `deploy` folder.
 
-### usage
-
-This will create a zip file `dist.1.0.2` from your source code and places it under the `deploy` folder. From aws elastic beanstalk environment simply upload the zip file to your website.
+The following command will create a zip file `dist.1.0.2.zip` from your client and server source code and places it under the `deploy` folder. From aws elastic beanstalk environment simply upload the zip file to your website.
 
 ```
 > ./elastic 1.0.2
 ```
+
+## debug
+
+You can debug your app on `localhost`. 
+1. Build React front-end
+```
+> npm run build
+```
+2. Start express web server
+```
+> express
+```
+3. Start front-end
+```
+> open http://localhost:3000
+```
+
 
