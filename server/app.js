@@ -16,6 +16,18 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
 });
 
+app.get('/public', function (req, res) {
+  res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
+});
+
+app.get('/protected', function (req, res) {
+  res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
+});
+
+app.get('/login', function (req, res) {
+  res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
+});
+
 app.post('/auth', function (req, res) {
   // console.log(req.body);
   if (req.body.password === 'help') {

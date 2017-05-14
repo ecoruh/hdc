@@ -115,16 +115,9 @@ class Login extends React.Component {
       redirectToReferrer: false,
       value: ''
     }
-    this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.login = this.login.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
-  }
-
-  login() {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true })
-    }, this.state.value);
   }
 
   getValidationState() {
@@ -133,8 +126,10 @@ class Login extends React.Component {
     else if (length > 0) return 'error';
   }
 
-  handleSubmit(event) {
-    this.login();
+  login(event) {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true })
+    }, this.state.value);
     event.preventDefault();
   }
 
@@ -155,7 +150,7 @@ class Login extends React.Component {
     return (
       <div>
         <p>You must log in to view the page at {from.pathname}</p>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.login}>
           <FormGroup
             controlId="formBasicText"
             validationState={this.getValidationState()}
@@ -168,7 +163,7 @@ class Login extends React.Component {
               onChange={this.handleChange}
             />
             <FormControl.Feedback />
-            <HelpBlock>Validation is based on string length.</HelpBlock>
+            <HelpBlock />
           </FormGroup>
           <Button type="submit">Log in</Button>
         </Form>
