@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
+  NavLink,
   Link,
   Redirect,
   withRouter
@@ -9,6 +10,9 @@ import {
 import './bootstrap.min.css';
 import {
   Navbar,
+  NavItem,
+  Nav,
+  ButtonToolbar,
   Button,
   Form,
   FormGroup,
@@ -18,28 +22,15 @@ import {
 } from 'react-bootstrap';
 import ApiUtils from './ApiUtils';
 
-////////////////////////////////////////////////////////////
-// 1. Click the public page
-// 2. Click the protected page
-// 3. Log in
-// 4. Click the back button, note the URL each time
-
 const AuthExample = () => (
   <Router>
     <div className="container">
       <Navbar inverse>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#">home data centre</a>
-          </Navbar.Brand>
-        </Navbar.Header>
+        <Nav>
+          <LoginItem />
+          <LogoutItem />
+        </Nav>
       </Navbar>
-      <AuthButton />
-      <ul>
-        <li><Link to="/public">Public Page</Link></li>
-        <li><Link to="/protected">Protected Page</Link></li>
-      </ul>
-      <Route path="/public" component={Public} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/protected" component={Protected} />
     </div>
@@ -79,15 +70,23 @@ const fakeAuth = {
   }
 }
 
-const AuthButton = withRouter(({ history }) => (
-  fakeAuth.isAuthenticated ? (
-    <p>
-      Welcome! <Button onClick={() => {
-        fakeAuth.signout(() => history.push('/'))
-      }}>Sign out</Button>
-    </p>
+const LoginItem = withRouter(({ history }) => (
+  !fakeAuth.isAuthenticated ? (
+    <NavItem eventKey={1} href="/protected">Login&nbsp;&nbsp;&nbsp;
+    </NavItem>
   ) : (
-      <p>You are not logged in.</p>
+      <div></div>
+    )
+))
+
+const LogoutItem = withRouter(({ history }) => (
+  fakeAuth.isAuthenticated ? (
+    <NavItem eventKey={2} onClick={() => {
+      fakeAuth.signout(() => history.push('/'))
+    }}>Logout&nbsp;&nbsp;&nbsp;
+      </NavItem>
+  ) : (
+      <div></div>
     )
 ))
 
@@ -149,7 +148,6 @@ class Login extends React.Component {
 
     return (
       <div>
-        <p>You must log in to view the page at {from.pathname}</p>
         <Form onSubmit={this.login}>
           <FormGroup
             controlId="formBasicText"
