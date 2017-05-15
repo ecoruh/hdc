@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
+const crypto = require('crypto');
 require('dotenv').config();
 
 var log = function (entry) {
@@ -29,11 +30,13 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/auth', function (req, res) {
-  // console.log(req.body);
-  if (req.body.password === 'help') {
+  const hash = crypto.createHmac('sha256', process.env.SECRET)
+    .update(req.body.password)
+    .digest('hex');
+  if (hash === process.env.HASH) {
     res.send({ success: true });
   } else {
-    res.send({ success: false});
+    res.send({ success: false });
   }
 });
 
