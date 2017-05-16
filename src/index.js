@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
-import AuthExample from './AuthExample';
+import App from './App';
 import './index.css';
 
 ReactDOM.render(
-  <AuthExample />,
+  <App />,
   document.getElementById('root')
 );

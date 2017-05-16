@@ -17,10 +17,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
 });
 
-app.get('/public', function (req, res) {
-  res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
-});
-
 app.get('/protected', function (req, res) {
   res.sendFile(path.join(__dirname, process.env.REACT_PATH, 'index.html'));
 });
