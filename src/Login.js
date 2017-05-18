@@ -51,6 +51,7 @@ class Login extends React.Component {
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { message } = this.props.location.state || { message: ''}
     const { redirectToReferrer } = this.state
 
     if (redirectToReferrer) {
@@ -74,7 +75,7 @@ class Login extends React.Component {
               onChange={this.handleChange}
             />
             <FormControl.Feedback />
-            <HelpBlock />
+            <HelpBlock>{message}</HelpBlock>
           </FormGroup>
           <Button type="submit">Log in</Button>
         </Form>

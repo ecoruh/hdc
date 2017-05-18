@@ -26,10 +26,18 @@ const App = () => (
           <LogoutItem />
         </Nav>
       </Navbar>
+      <ul>
+        <li><Link to="/public">Public Page</Link></li>
+      </ul>  
+      <Route path="/public" component={Public} />
       <Route path="/login" component={Login} />
       <PrivateRoute path="/protected" component={Protected} />
     </div>
   </Router>
+)
+
+const Public = () => (
+  <h2>Public</h2>
 )
 
 const LoginItem = withRouter(({ history }) => (
@@ -43,7 +51,7 @@ const LoginItem = withRouter(({ history }) => (
 
 const LogoutItem = withRouter(({ history }) => (
   Auth.isAuthenticated ? (
-    <NavItem eventKey={2} onClick={() => {
+    <NavItem eventKey={1} onClick={() => {
       Auth.signout(() => history.push('/'))
     }}>Logout&nbsp;&nbsp;&nbsp;
       </NavItem>
@@ -59,7 +67,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     ) : (
         <Redirect to={{
           pathname: '/login',
-          state: { from: props.location }
+          state: { from: props.location, message: Auth.message}
         }} />
       )
   )} />

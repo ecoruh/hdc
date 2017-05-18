@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 require('dotenv').config();
 
-console.log(process.env.SECRET);
+console.log(process.env.SECRET1);
 console.log(process.env.UPDATE);
 
 const secret = process.env.SECRET;
