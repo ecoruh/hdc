@@ -19,7 +19,35 @@ Keep your household data safe, protected by strong encryption and authentication
 - [Step 3 - Request a certificate](http://68-kb.blogspot.com.au/2017/04/hdc-aws-certficate-manager.html)
 - [Step 4 - Create an ebs application](http://68-kb.blogspot.com.au/2017/04/step-4-create-application.html)
 
-## The command `elastic`
+## Web Client
+The Web Client is a single page app built with React. The React project was created with these commands:
+
+```
+npm install -g create-react-app
+create-react-app my-app
+```
+
+The Web Client source code is stored under the `src` folder.
+
+[React Hello World](https://facebook.github.io/react/docs/hello-world.html)
+[React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
+[React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+[React Bootstrap](https://react-bootstrap.github.io/)
+
+## Web Server
+The Web Server is an Express server running on Node.js runtime. 
+
+The Web Server source code is stored under the `server` folder.
+
+[Express Routing](https://expressjs.com/en/guide/routing.html)
+[Authenticate Node.js API with JWT](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens)
+
+## Single page app
+The single page app is stored under the `public` folder.
+
+## Tools
+
+### The command `elastic`
 
 The command line tool `elastic` builds and zips `hdc` under the `deploy/.ebs` folder.
 
@@ -29,7 +57,7 @@ The command `elastic` will create a zip file from your web client and web server
 > ./elastic 1.0.2
 ```
 
-## Debug
+### Debug
 
 You can debug `hdc` app on your `localhost`. 
 1. Build React front-end
