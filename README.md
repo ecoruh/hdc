@@ -1,35 +1,31 @@
 # hdc
-## home data centre
+## Home Data Centre
 Keep your household data safe, protected by strong encryption and authentication. Access your data from anywhere in the world using any device or computer.
 
-## technology stack
+[HDC Requirements](http://68-kb.blogspot.com.au/2017/04/home-data-centre-hdc.html)
+[HDC Technology Stack](http://68-kb.blogspot.com.au/2017/04/hdc-technology-stack.html)
 
-- elastic beanstalk
-- node.js
-- react.js
-- express
+## Best practices
 
-## hidden stuff
+- Sensitive meta data required by `hdc` should be kept in environment files and should not be checked in.
+- Sensitive data should be encrypted and should not be checked in.
 
-Sensitive meta data required by `hdc` should be kept in environment files and should not be checked in. Sensitive data should be encrypted and should not be checked in.
+## Prerequisites
 
-## prerequisites
+[Step 1 - Create an AWS account](http://68-kb.blogspot.com.au/2017/04/hdc-create-aws-account.html)
+[Step 2 - Register a domain name](http://68-kb.blogspot.com.au/2017/04/hdc-amazon-route-53.html)
+[Step 3 - Request a certificate](http://68-kb.blogspot.com.au/2017/04/hdc-aws-certficate-manager.html)
+[Step 4 - Create an ebs application](http://68-kb.blogspot.com.au/2017/04/step-4-create-application.html)
 
-You need to follow aws elastic beanstalk documentation to secure your website with `https` access via properly signed certificate. You also need to disable `http`. This would mean you need to have a folder `.ebextensions` under the folder `deploy` with a file `securelistener.config`. This file should contain something similar to this:
+You need to follow aws elastic beanstalk documentation to secure your website with `https` access via properly signed certificate. You also need to disable `http`. This would mean you need to have a folder `.ebextensions` under the folder `deploy` with a file `securelistener.config`. 
 
-```
-option_settings:
-  aws:elb:listener:443:
-    SSLCertificateId: arn:********************
-    ListenerProtocol: HTTPS
-    InstancePort: 80
-```
+[Configuring Your Elastic Beanstalk Environment's Load Balancer to Terminate HTTPS](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https-elb.html)
 
 ## elastic
 
-The command line tool `elastic` builds and zips `hdc` under the `deploy` folder.
+The command line tool `elastic` builds and zips `hdc` under the `deploy/.ebs` folder.
 
-The following command will create a zip file `dist.1.0.2.zip` from your client and server source code and places it under the `deploy` folder. From aws elastic beanstalk environment simply upload the zip file to your website.
+The following command will create a zip file `hdc.1.0.2.zip` from your client and server source code and places it under the `deploy/.ebs` folder. From aws elastic beanstalk environment simply upload the zip file to your website.
 
 ```
 > ./elastic 1.0.2
@@ -44,7 +40,7 @@ You can debug your app on `localhost`.
 ```
 2. Start express web server
 ```
-> express
+> ./express
 ```
 3. Start front-end
 ```
