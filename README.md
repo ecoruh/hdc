@@ -29,18 +29,18 @@ create-react-app my-app
 
 The Web Client source code is stored under the `src` folder.
 
-[React Hello World](https://facebook.github.io/react/docs/hello-world.html)
-[React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
-[React Router](https://reacttraining.com/react-router/web/guides/quick-start)
-[React Bootstrap](https://react-bootstrap.github.io/)
+- [React Hello World](https://facebook.github.io/react/docs/hello-world.html)
+- [React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Bootstrap](https://react-bootstrap.github.io/)
 
 ## Web Server
 The Web Server is an Express server running on Node.js runtime. 
 
 The Web Server source code is stored under the `server` folder.
 
-[Express Routing](https://expressjs.com/en/guide/routing.html)
-[Authenticate Node.js API with JWT](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens)
+- [Express Routing](https://expressjs.com/en/guide/routing.html)
+- [Authenticate Node.js API with JWT](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens)
 
 ## Single page app
 The single page app is stored under the `public` folder.
