@@ -17,8 +17,8 @@ if [ "$1" != "" ]; then
   mv build deploy
   echo "=> Zipping..."
   cd deploy
-  mkdir -p .ebs
-  zip -r .ebs/hdc.$1.zip *.js *.json *.yaml .env .ebextensions/* build/* node_modules/*
+  mkdir -p ebs
+  zip -r ebs/hdc.$1.zip *.js *.json *.yaml .env .ebextensions/* build/* node_modules/*
   echo "=> Done"
   cd ..
 else

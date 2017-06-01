@@ -1,20 +1,14 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Link,
   Redirect,
-  withRouter
 } from 'react-router-dom'
-import './bootstrap.min.css';
 import {
   Button,
   Form,
   FormGroup,
   ControlLabel,
   FormControl,
-  HelpBlock
+  HelpBlock,
 } from 'react-bootstrap';
 import ApiUtils from './ApiUtils';
 import Auth from './Auth';

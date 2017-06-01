@@ -47,7 +47,7 @@ apiRoutes.post('/authenticate', function (req, res) {
   if (hash === process.env.HASH) {
     // if password is right create a token
     var token = jwt.sign({ data: req.body.password }, process.env.SECRET2, {
-      expiresIn: 60*60 // expires in 1 hour
+      expiresIn: 60 * 60 // expires in 1 hour
     });
 
     // return the information including token as JSON
@@ -96,7 +96,10 @@ apiRoutes.use(function (req, res, next) {
 
 // route to return all items (GET http://localhost:3000/api/book)
 apiRoutes.get('/book', function (req, res) {
-  res.json([{ name: 'ergun' }, { name: 'semra' }]);
+  res.json([
+    { id: 0, name: 'ergun', value: 'engineer' },
+    { id: 1, name: 'semra', value: 'bookworm' }
+    ]);
 });
 
 // apply the routes to our application with the prefix /api

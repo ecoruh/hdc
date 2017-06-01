@@ -1,6 +1,8 @@
 import React from 'react';
 import ApiUtils from './ApiUtils';
 import Auth from './Auth';
+import Search from './Search';
+import { Table } from 'react-bootstrap';
 
 const Record = {
   list: [],
@@ -28,11 +30,33 @@ const Record = {
   }
 }
 
+class TableInstance extends React.Component {
+  render() {
+    const listItems = this.props.items.map((item, index) =>
+      <tr><td>{item.name}</td><td>{item.value}</td></tr>
+    ); 
+    return (
+      <Table striped bordered condensed hover>
+        {/*<thead>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>*/}
+        <tbody>
+          {listItems}
+        </tbody>
+      </Table>
+    );
+  }
+}
+
 class Protected extends React.Component {
 
   constructor() {
     super();
-    this.state = { list: [] };
+    this.state = { list: [], term: '' };
+    this.handleSearchTerm = this.handleSearchTerm.bind(this);
   }
 
   componentDidMount() {
@@ -41,18 +65,20 @@ class Protected extends React.Component {
     });
   }
 
-  render() {
-    const listItems = this.state.list.map((item) =>
-      <li>{item.name}</li>
-    );
-    return (
-      <div>
-        <h3>Book</h3>
-        <ul>{listItems}</ul>
-      </div>);
+  handleSearchTerm(searchTerm) {
+    this.setState({ term: searchTerm });
   }
 
+  render() {
+    return (
+      <div>
+        <Search handleTerm={this.handleSearchTerm} />
+        <p></p>
+        <div>{this.state.term}</div>
+        <div>{this.props.searchComponent ? this.props.searchComponent.props.search : ''}</div>
+        <TableInstance items={this.state.list} />
+      </div>);
+  }
 }
 
-// const Protected = () => <h3>Protected</h3>
 export default Protected;
