@@ -96,10 +96,14 @@ apiRoutes.use(function (req, res, next) {
 
 // route to return all items (GET http://localhost:3000/api/book)
 apiRoutes.get('/book', function (req, res) {
-  res.json([
-    { id: 0, name: 'ergun', value: 'engineer' },
-    { id: 1, name: 'semra', value: 'bookworm' }
-    ]);
+  var arr = [
+    { name: 'ANZ password', value: 'bahJ78Haj864n' },
+    { name: 'Semra Passport', value: '123456789' },
+    { name: 'Ergun Passport', value: '123456789' }
+  ];
+  arr.sort( function(a, b) { return a.name.localeCompare(b.name); });
+  console.log(arr);
+  res.json(arr);
 });
 
 // apply the routes to our application with the prefix /api

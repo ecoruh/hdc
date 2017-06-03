@@ -32,7 +32,6 @@ const App = () => (
 const LoginItem = withRouter(({ history }) => (
   !Auth.isAuthenticated ? (
     <NavItem eventKey={1} href="/protected">Login
-    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </NavItem>
   ) : (
       <div></div>
@@ -44,7 +43,6 @@ const LogoutItem = withRouter(({ history }) => (
     <NavItem eventKey={1} onClick={() => {
       Auth.signout(() => history.push('/'))
     }}>Logout
-    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </NavItem>
   ) : (
       <div></div>

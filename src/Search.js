@@ -6,6 +6,8 @@ import {
   ControlLabel,
   FormControl,
   HelpBlock,
+  InputGroup,
+  Glyphicon,
 } from 'react-bootstrap';
 
 class Search extends React.Component {
@@ -15,9 +17,10 @@ class Search extends React.Component {
     this.state = {
       term: ''
     }
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
+    this.clearEntry = this.clearEntry.bind(this);
   }
 
   getValidationState() {
@@ -27,32 +30,47 @@ class Search extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.handleTerm(this.state.term);
     event.preventDefault();
   }
 
+
   handleChange(event) {
-    this.setState({ term: event.target.value });
+    var term = event.target.value;
+    this.setState({ term: term });
+    var terms = term.trim().split(/[\s]+/);
+    var filter = function (value, index) { return this.indexOf(value) == index };
+    var filteredData = terms.filter(filter, terms);
+    this.props.handleTerm(filteredData);
+  }
+
+  clearEntry() {
+    this.setState({ term: '' });
+    this.props.handleTerm([""]);
   }
 
   render() {
     return (
       <div>
-        <Form inline onSubmit={this.handleSubmit}>
-          <FormGroup
-            controlId="formBasicText"
-            validationState={this.getValidationState()}
-          >
-            <FormControl
-              type="search"
-              value={this.state.term}
-              placeholder="Search..."
-              onChange={this.handleChange}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-          {' '}
-          <Button type="submit">Search</Button>
+        <Form onSubmit={this.handleSubmit}>
+            <FormGroup
+              controlId="formBasicText"
+              validationState={this.getValidationState()}
+            >
+              <InputGroup>
+                <FormControl
+                  type="search"
+                  value={this.state.term}
+                  placeholder="Search..."
+                  onChange={this.handleChange}
+                  autoCorrect="off" 
+                  autoCapitalize="none"
+                />
+                <InputGroup.Button>
+                  <Button onClick={this.clearEntry}><Glyphicon glyph="remove-sign" /></Button>
+                </InputGroup.Button>
+              </InputGroup>
+            </FormGroup>
+            {' '}
         </Form>
       </div>
     )

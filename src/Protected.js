@@ -2,7 +2,7 @@ import React from 'react';
 import ApiUtils from './ApiUtils';
 import Auth from './Auth';
 import Search from './Search';
-import { Table } from 'react-bootstrap';
+import { Table, Col } from 'react-bootstrap';
 
 const Record = {
   list: [],
@@ -34,7 +34,7 @@ class TableInstance extends React.Component {
   render() {
     const listItems = this.props.items.map((item, index) =>
       <tr><td>{item.name}</td><td>{item.value}</td></tr>
-    ); 
+    );
     return (
       <Table striped bordered condensed hover>
         {/*<thead>
@@ -55,28 +55,39 @@ class Protected extends React.Component {
 
   constructor() {
     super();
-    this.state = { list: [], term: '' };
+    this.state = { list: [], filteredList: [] };
     this.handleSearchTerm = this.handleSearchTerm.bind(this);
   }
 
   componentDidMount() {
     Record.getRecord(() => {
-      this.setState({ list: Record.list })
+      this.setState({ list: Record.list, filteredList: Record.list })
     });
   }
 
-  handleSearchTerm(searchTerm) {
-    this.setState({ term: searchTerm });
+  handleSearchTerm(terms) {
+    this.setState({ filteredList: [] });
+    var filtered = [];
+    this.state.list.forEach((item) => {
+      for (var i = 0; i < terms.length; ++i) {
+        if (item.name.toUpperCase().search(terms[i].toUpperCase()) >= 0 ||
+          item.value.search(terms[i]) >= 0) {
+          filtered.push(item);
+        }
+      }
+    });
+    this.setState({ filteredList: filtered });
   }
 
   render() {
     return (
       <div>
-        <Search handleTerm={this.handleSearchTerm} />
-        <p></p>
-        <div>{this.state.term}</div>
-        <div>{this.props.searchComponent ? this.props.searchComponent.props.search : ''}</div>
-        <TableInstance items={this.state.list} />
+        <Col sm={12} smOffset={0} md={6} mdOffset={0}>
+          <Search handleTerm={this.handleSearchTerm} />
+          <p></p>
+          <div>{this.props.searchComponent ? this.props.searchComponent.props.search : ''}</div>
+          <TableInstance items={this.state.filteredList} />
+        </Col>
       </div>);
   }
 }
