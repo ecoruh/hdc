@@ -69,11 +69,16 @@ class Protected extends React.Component {
     this.setState({ filteredList: [] });
     var filtered = [];
     this.state.list.forEach((item) => {
+      let found = true;
       for (var i = 0; i < terms.length; ++i) {
-        if (item.name.toUpperCase().search(terms[i].toUpperCase()) >= 0 ||
-          item.value.search(terms[i]) >= 0) {
-          filtered.push(item);
+        if (item.name.toUpperCase().search(terms[i].toUpperCase()) < 0 &&
+          item.value.toUpperCase().search(terms[i].toUpperCase()) < 0) {
+            found = false;
+            break;
         }
+      }
+      if (found) {
+        filtered.push(item);
       }
     });
     this.setState({ filteredList: filtered });

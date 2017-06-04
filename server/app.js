@@ -6,6 +6,7 @@ const app = express();
 const crypto = require('crypto');
 const morgan = require('morgan');
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const fs = require('fs');
 require('dotenv').config();
 
 var log = function (entry) {
@@ -94,16 +95,16 @@ apiRoutes.use(function (req, res, next) {
   }
 });
 
+const decipher = crypto.createDecipher('aes192', process.env.HASH);
+var encrypted = fs.readFileSync( '' + process.env.ENCFILE, { encoding: 'utf8' });
+var decrypted = decipher.update(encrypted, 'hex', 'utf8');
+decrypted += decipher.final('utf8');
+var decryptedObj = JSON.parse(decrypted);
+decryptedObj.contents.sort( function(a, b) { return a.name.localeCompare(b.name); });
+
 // route to return all items (GET http://localhost:3000/api/book)
 apiRoutes.get('/book', function (req, res) {
-  var arr = [
-    { name: 'ANZ password', value: 'bahJ78Haj864n' },
-    { name: 'Semra Passport', value: '123456789' },
-    { name: 'Ergun Passport', value: '123456789' }
-  ];
-  arr.sort( function(a, b) { return a.name.localeCompare(b.name); });
-  console.log(arr);
-  res.json(arr);
+  res.json(decryptedObj.contents);
 });
 
 // apply the routes to our application with the prefix /api

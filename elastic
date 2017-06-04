@@ -3,10 +3,10 @@ if [ "$1" != "" ]; then
   echo "Copying server"
   mkdir -p deploy
   cp server/package.json deploy
-  cp server/*.js deploy
+  cp server/app.js deploy
+  cp server/*.enc deploy
+  cp server/crypto/ebs.env deploy/.env
   cd deploy
-  cp my.env .env
-  echo "REACT_PATH=./build" >> .env
   npm install
   cd ..
   echo "=> Building React.."
@@ -18,7 +18,7 @@ if [ "$1" != "" ]; then
   echo "=> Zipping..."
   cd deploy
   mkdir -p ebs
-  zip -r ebs/hdc.$1.zip *.js *.json *.yaml .env .ebextensions/* build/* node_modules/*
+  zip -r ebs/hdc.$1.zip *.js *.json *.yaml *.enc .env .ebextensions/* build/* node_modules/*
   echo "=> Done"
   cd ..
 else
