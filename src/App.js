@@ -18,6 +18,9 @@ const App = () => (
   <Router>
     <div className="container">
       <Navbar inverse>
+        <Navbar.Brand>
+          <a href="#"><img src="react.svg" height="24" width="24" alt="Home Data Centre" /></a>
+        </Navbar.Brand>
         <Nav pullLeft>
           <LoginItem />
           <LogoutItem />
