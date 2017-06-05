@@ -2,7 +2,11 @@ import React from 'react';
 import ApiUtils from './ApiUtils';
 import Auth from './Auth';
 import Search from './Search';
-import { Table, Col } from 'react-bootstrap';
+import {
+  Table,
+  Col,
+  Button,
+} from 'react-bootstrap';
 
 const Record = {
   list: [],
@@ -30,19 +34,35 @@ const Record = {
   }
 }
 
+class ButtonInstance extends React.Component {
+  constructor() {
+    super();
+    this.state = { show: false };
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    let newShow = !this.state.show;
+    this.setState({ show: newShow });
+  }
+
+  render() {
+    return (
+      <div>
+        <Button bsStyle="link" onClick={this.toggle}>{this.props.name}</Button>
+        <span>{'    '}</span>{this.state.show ? this.props.value : ''}
+      </div>
+    )
+  }
+}
+
 class TableInstance extends React.Component {
   render() {
     const listItems = this.props.items.map((item, index) =>
-      <tr><td>{item.name}</td><td>{item.value}</td></tr>
+      <tr><td><ButtonInstance id={item.id} name={item.name} value={item.value} /></td></tr>
     );
     return (
       <Table striped bordered condensed hover>
-        {/*<thead>
-          <tr>
-            <th>Name</th>
-            <th>Value</th>
-          </tr>
-        </thead>*/}
         <tbody>
           {listItems}
         </tbody>
@@ -73,8 +93,8 @@ class Protected extends React.Component {
       for (var i = 0; i < terms.length; ++i) {
         if (item.name.toUpperCase().search(terms[i].toUpperCase()) < 0 &&
           item.value.toUpperCase().search(terms[i].toUpperCase()) < 0) {
-            found = false;
-            break;
+          found = false;
+          break;
         }
       }
       if (found) {
