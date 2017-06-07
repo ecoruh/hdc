@@ -5,6 +5,10 @@ Keep your household data safe, protected by strong encryption and authentication
 - [HDC Requirements](http://68-kb.blogspot.com.au/2017/04/home-data-centre-hdc.html)
 - [HDC Technology Stack](http://68-kb.blogspot.com.au/2017/04/hdc-technology-stack.html)
 
+### Latest News
+
+> Although AWS Elastic Beanstalk environment worked well, it was expensive. Most of the cost was incurred by the EC2 instance. Things got worse when in the middle of development Australian Government imposed GST for non-business users like me. It costed me around 40 AUD per month. Therefore I decided to abondon HDC project and port it to serverless arcitecture which I hope will cost much less. The new project is code named `wombat` and under development.
+
 ## Best practices
 
 - Plain passwords must not be stored anywhere.
