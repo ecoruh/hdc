@@ -68,7 +68,7 @@ ENCFILE=foo.enc
 
 ### Step 2. Generate hash from password
 
-The crypto tool allows generation of hash code from a login password and contents of `.env` file. This password shall be used to login to the application. The following command shall ask for the new login password.
+The crypto tool allows generation of hash code from a login password and contents of the `.env` file. This password shall be used to login to the application. The following command shall ask for the new login password, it will encrypt the clear data file and make it ready for deployment. 
 
 ```
 > cd server/crypto
