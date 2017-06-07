@@ -45,11 +45,39 @@ The Web Server source code is stored under the `server` folder.
 ## Single page app
 The single page app is stored under the `public` folder.
 
-## Tools
+## Deployment
 
-### The command `elastic`
+### Step 1. Create your .env file
 
-The command line tool `elastic` builds and zips `hdc` under the `deploy/.ebs` folder.
+The `crypto/.env` file shall contain sensitive parameters required to deploy and operate your app securely.
+
+The `crypto/.env` should never be checked in under source control.
+
+Contents of `crypto/.env` file are given below.
+
+*  SECRET1 and SECRET2 are random seeds. Make them as long and as randomly formed possible.
+*  CLRFILE is a tab delimited clear file that holds name value pairs like `My bank password\t1234567890`.
+* ENCFILE is the encrypted binary file with *.enc extension. This file is the encrypted version of the CLRFILE. ENCFILE shall be deployed to the cloud via `elastic` script.
+
+```
+SECRET1=1234567890qwertyuiop1234567890qwertyuiop
+SECRET2=qwertyuiop1234567890qwertyuiop1234567890
+CLRFILE=foo.tab
+ENCFILE=foo.enc
+```
+
+### Step 2. Generate hash from password
+
+The crypto tool allows generation of hash code from a login password and contents of `.env` file. This password shall be used to login to the application. The following command shall ask for the new login password.
+
+```
+> cd crypto
+> node app
+```
+
+### Step 2. Create application zip file with command `elastic`
+
+The command line tool `elastic` builds and zips `hdc` application under the `deploy/.ebs` folder.
 
 The command `elastic` will create a zip file from your web client and web server code and places it under the `deploy/.ebs` folder. From aws elastic beanstalk portal simply upload the zip file to your website.
 
@@ -59,18 +87,12 @@ The command `elastic` will create a zip file from your web client and web server
 
 ### Debug
 
-You can debug `hdc` app on your `localhost`. 
-1. Build React front-end
-```
-> npm run build
-```
-2. Start express web server
+You can debug `hdc` app on your `localhost:3000`. 
+1. Build and start express web server
 ```
 > ./express
 ```
-3. Start front-end
+2. Start front-end
 ```
 > open http://localhost:3000
 ```
-
-

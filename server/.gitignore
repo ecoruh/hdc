@@ -1,5 +1,7 @@
 node_modules
-crypto
 **/.env
+**/*.env
 **/*.enc
-
+**/*.cip
+**/*.tab
+**/*.csv
