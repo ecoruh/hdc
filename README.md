@@ -49,11 +49,11 @@ The single page app is stored under the `public` folder.
 
 ### Step 1. Create your .env file
 
-The `crypto/.env` file shall contain sensitive parameters required to deploy and operate your app securely.
+The `server/crypto/.env` file shall contain sensitive parameters required to deploy and operate your app securely.
 
-The `crypto/.env` should never be checked in under source control.
+The `server/crypto/.env` should never be checked in under source control.
 
-Contents of `crypto/.env` file are given below.
+Contents of `server/crypto/.env` file are given below.
 
 *  SECRET1 and SECRET2 are random seeds. Make them as long and as randomly formed possible.
 *  CLRFILE is a tab delimited clear file that holds name value pairs like `My bank password\t1234567890`.
