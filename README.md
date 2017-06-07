@@ -7,7 +7,7 @@ Keep your household data safe, protected by strong encryption and authentication
 
 ### Latest News
 
-> This project uses AWS Elastic Beanstalk environment. worked well, it was expensive. Most of the cost was incurred by the EC2 instance. Things got worse when in the middle of development Australian Government imposed GST for non-business users like me. It costed me around 40 AUD per month. Therefore I decided to abondon HDC project and port it to serverless arcitecture which I hope will cost much less. The new project is code named `wombat` and under development.
+> This project uses an AWS Elastic Beanstalk environment. EBS worked well, but it was expensive. Most of the cost was incurred by the EC2 instance. Things got worse when in the middle of development Australian Government imposed GST for non-business users like me. It costed me around 40 AUD per month. Therefore I decided to abondon HDC project and port it to serverless arcitecture which I hope will cost much less. The new project is code named `wombat` and under development.
 
 ## Best practices
 
