@@ -9,7 +9,7 @@ Keep your household data safe, protected by strong encryption and authentication
 
 HDC uses an AWS Elastic Beanstalk (EBS) environment. EBS provides a seamless environment to deploy and manage your app. 
 
-> EBS is great and the HDC app I shared in this repository is a fully functioning version, so you can go ahead and adopt it in your EBS environment. But beware of the costs. EBS is probably an overkill for a simple app like HDC, which has a very low hit rate. HDC would cost around $30 (45 AUD) a month even with the leanest EC2 option. You may want to consider using technologies with much lower cost, such as serverless (AWS Lambda).
+> EBS is great and the HDC app I shared in this repository is a fully functioning version, so you can go ahead and adopt it in your EBS environment. But beware of the costs. EBS is probably an overkill for a simple app like HDC, which has a very low hit rate. HDC would cost around $30 (45 AUD) a month even with the leanest EC2 option. You may consider using technologies with much lower cost, such as serverless (AWS Lambda) in stead of using EBS.
 
 ## Best practices
 
