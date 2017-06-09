@@ -23,7 +23,7 @@ Seamless auto-complete search, click to preview or copy:
 
 HDC uses an AWS Elastic Beanstalk (EBS) environment. EBS provides a seamless environment to deploy and manage your app. 
 
-> EBS is great and the HDC app I shared in this repository is a fully functioning version, so you can go ahead and adopt it in your EBS environment. But beware of the costs. EBS is probably an overkill for a simple app like HDC, which has a very low hit rate. HDC would cost around $30 (45 AUD) a month even with the leanest EC2 option. You may consider using technologies with much lower cost, such as serverless (AWS Lambda) in stead of using EBS.
+> EBS is great and the app I shared in this repository is a fully functioning core version, so you can go ahead and adopt or enhance it in your EBS environment. But beware of the operational costs. EBS is probably an overkill for a simple app like HDC that has a very low hit rate (one or two users with rare access). HDC would cost around $30 (45 AUD) a month even with the leanest EC2 CPU option, `t1-micro`. The incoming release of HDC (code named `wombat`) will use cloud technologies with much lower cost, namely  AWS Lambda and [serverless](https://serverless.com/). But if you can't wait and you want to experiment with it go ahead, use this version.
 
 ## Best practices
 
