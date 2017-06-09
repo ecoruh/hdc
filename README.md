@@ -5,7 +5,17 @@ Keep your household data safe, protected by strong encryption and authentication
 - [HDC Requirements](http://68-kb.blogspot.com.au/2017/04/home-data-centre-hdc.html)
 - [HDC Technology Stack](http://68-kb.blogspot.com.au/2017/04/hdc-technology-stack.html)
 
-# HDC Technology Stack 
+## Screenshots
+
+Simple, secure web interface to access your sensitive data anywhere.
+
+![login](doc/img/login.png)
+
+Seamless auto-complete search, click to preview or copy.
+
+![search](doc/img/search.png) 
+
+## HDC Technology Stack 
 
 HDC uses an AWS Elastic Beanstalk (EBS) environment. EBS provides a seamless environment to deploy and manage your app. 
 
