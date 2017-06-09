@@ -7,11 +7,15 @@ Keep your household data safe, protected by strong encryption and authentication
 
 ## Screenshots
 
-Simple, secure web interface to access your sensitive data anywhere.
+> Note: Screenshots given below show insecure localhost versions of the HDC. When deployed to your domain, the app must be secured by HTTPS. See [Web Hosting](#web-hosting) section below on how to secure your domain with HTTPS. 
+
+### Simple
+Simple secure web interface to access your sensitive data anywhere, using any device, any brand, desktop or mobile alike:
 
 ![login](doc/img/login.png)
-
-Seamless auto-complete search, click to preview or copy.
+ 
+ ### Autocomplete
+Seamless auto-complete search, click to preview or copy:
 
 ![search](doc/img/search.png) 
 
@@ -28,7 +32,7 @@ HDC uses an AWS Elastic Beanstalk (EBS) environment. EBS provides a seamless env
 - Sensitive data should be encrypted.
 - Sensitive data should not be checked in under source control.
 
-## Web hosting
+## [Web hosting](#web-hosting)
 
 - [Step 1 - Create an AWS account](http://68-kb.blogspot.com.au/2017/04/hdc-create-aws-account.html)
 - [Step 2 - Register a domain name](http://68-kb.blogspot.com.au/2017/04/hdc-amazon-route-53.html)
