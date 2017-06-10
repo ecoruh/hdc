@@ -32,7 +32,8 @@ HDC uses an AWS Elastic Beanstalk (EBS) environment. EBS provides a seamless env
 - Sensitive data should be encrypted.
 - Sensitive data should not be checked in under source control.
 
-## [Web hosting](#web-hosting)
+[](#web-hosting)
+## Web hosting
 
 - [Step 1 - Create an AWS account](http://68-kb.blogspot.com.au/2017/04/hdc-create-aws-account.html)
 - [Step 2 - Register a domain name](http://68-kb.blogspot.com.au/2017/04/hdc-amazon-route-53.html)
